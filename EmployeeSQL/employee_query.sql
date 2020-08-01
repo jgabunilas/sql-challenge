@@ -1,3 +1,6 @@
+-- SQL Challenge queries
+-- Jason Gabunilas
+
 -- 1. List the following details of each employee: employee number, last name, first name, sex, and salary.
 
 select employees.emp_no as "Employee Number", employees.last_name as "Last Name", employees.first_name as "First Name", employees.sex as "Sex", salaries.salary as "Salary"
@@ -33,5 +36,32 @@ and last_name like 'B%'
 
 -- 6. List all employees in the Sales department, including their employee number, last name, first name, and department name.
 
--- select e.emp_no as "Employee Number", 
+select e.emp_no as "Employee Number", e.last_name as "Last Name", e.first_name as "First Name", d.dept_name as "Department Name"
+from employees e
+inner join dept_emp on (e.emp_no = dept_emp.emp_no)
+inner join departments d on (d.dept_no = dept_emp.dept_no)
+where d.dept_name = 'Sales'
+
+-- 7. List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
+
+-- for employees that are members of both the Sales and Development departments
+select e.emp_no as "Employee Number", e.last_name as "Last Name", e.first_name as "First Name", d.dept_name as "Department Name"
+from employees e
+full outer join dept_emp on (e.emp_no = dept_emp.emp_no)
+full outer join departments d on (d.dept_no = dept_emp.dept_no)
+where d.dept_name = 'Sales' and d.dept_name = 'Development'
+
+-- for employees that are members of either the Sales or Development departments
+select e.emp_no as "Employee Number", e.last_name as "Last Name", e.first_name as "First Name", d.dept_name as "Department Name"
+from employees e
+full outer join dept_emp on (e.emp_no = dept_emp.emp_no)
+full outer join departments d on (d.dept_no = dept_emp.dept_no)
+where d.dept_name = 'Sales' or d.dept_name = 'Development'
+
+-- 8. In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
+select last_name, count(last_name)
+from employees
+group by last_name
+order by count(last_name) DESC
+
 

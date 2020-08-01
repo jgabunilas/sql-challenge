@@ -15,8 +15,8 @@ salary int
 
 dept_emp
 -
-emp_no int
-dept_no varchar(20) fk >- departments.dept_no
+emp_no pk int
+dept_no pk varchar(20) fk >- departments.dept_no
 
 titles
 -

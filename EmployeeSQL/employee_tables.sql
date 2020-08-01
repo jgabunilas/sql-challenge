@@ -42,6 +42,7 @@ select * from employees
 CREATE TABLE salaries (
     emp_no int NOT NULL primary key,
     salary int not null
+    foreign key (emp_no) references employees(emp_no)
 );
 select * from salaries
 
