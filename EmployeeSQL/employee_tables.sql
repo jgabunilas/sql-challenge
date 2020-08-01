@@ -1,10 +1,10 @@
 -- Drop tables if they exist
-DROP TABLE departments
-drop table titles
-drop table employees
-drop table salaries
-drop table dept_emp
-drop table dept_manager
+drop table dept_emp;
+drop table dept_manager;
+drop table salaries;
+DROP TABLE departments;
+drop table titles;
+drop table employees;
 
 -- Create the departments table
 
@@ -41,7 +41,7 @@ select * from employees
 -- Create the salaries table
 CREATE TABLE salaries (
     emp_no int NOT NULL primary key,
-    salary int not null
+    salary int not null,
     foreign key (emp_no) references employees(emp_no)
 );
 select * from salaries
